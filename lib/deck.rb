@@ -12,6 +12,10 @@ class Deck
         @cards[index].rank
     end
 
+    def high_ranking_cards
+        @cards.select {|cards| cards.rank >= 11}
+    end
+
     def percent_high_ranking
 
     end
