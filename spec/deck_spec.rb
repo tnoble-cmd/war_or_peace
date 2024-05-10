@@ -38,6 +38,29 @@ RSpec.describe Deck do
        expect(deck.high_ranking_cards.length).to eq(3)
     end
 
+    it 'Calculates percent_high_ranking' do
+        card1 = Card.new(:diamond, 'Queen', 12)
+        card2 = Card.new(:spade, 'King', 13)
+        card3 = Card.new(:diamond, '3', 3)
+        card4 = Card.new(:spade, 'Ace', 14)
+
+        deck = Deck.new([card1, card2, card3, card4])
+        #it will be a float .to eq
+        expect(deck.percent_high_ranking).to eq(75.0)
+    end
+
+    it 'Removes first card. remove_card' do
+        card1 = Card.new(:diamond, 'Queen', 12)
+        card2 = Card.new(:spade, 'King', 13)
+        card3 = Card.new(:diamond, '3', 3)
+        card4 = Card.new(:spade, 'Ace', 14)
+
+        deck = Deck.new([card1, card2, card3, card4])
+
+        expect(deck.remove_card).to eq(card1)
+    end
+
+
 
 
 
