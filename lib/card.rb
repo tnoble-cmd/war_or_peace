@@ -1,3 +1,4 @@
+require './lib/deck' 
 
 class Card
     attr_reader :suit, :value, :rank
@@ -9,4 +10,4 @@ class Card
 
     end
 
-    end
+end
