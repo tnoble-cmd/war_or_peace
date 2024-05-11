@@ -3,10 +3,20 @@ require './lib/deck'
 require './lib/card'
 
 RSpec.describe Deck do
-    it "exists" do
-        deck = Deck.new(['cards'])
+    
+    before(:each) do
+        @card1 = Card.new(:diamond, 'Queen', 12)
+        @card2 = Card.new(:spade, 'King', 13)
+        @card3 = Card.new(:diamond, '3', 3)
+        
 
-        expect(deck).to be_an_instance_of(Deck)
+        @deck = Deck.new([@card1, @card2, @card3])
+    end
+    
+    it "exists" do
+        
+
+        expect(@deck).to be_an_instance_of(Deck)
     end
     
     it "takes cards" do
@@ -60,12 +70,12 @@ RSpec.describe Deck do
         expect(deck.remove_card).to eq(card1)
     end
 
+    xit 'Add_card to the bottom of deck' do
+        
+        card4 = Card.new(:clubs, 'Ace', 14)
+        @deck.add_card(card4)
+        
+        expect(@deck.cards).to eq([@card1, @card2, @card3, card4])
 
-
-
-
-
-
-
-
+    end
 end
