@@ -70,7 +70,7 @@ RSpec.describe Deck do
         expect(deck.remove_card).to eq(card1)
     end
 
-    xit 'Add_card to the bottom of deck' do
+    it 'Add_card to the bottom of deck' do
         
         card4 = Card.new(:clubs, 'Ace', 14)
         @deck.add_card(card4)
