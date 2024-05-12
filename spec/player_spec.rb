@@ -31,6 +31,10 @@ RSpec.describe Player do
         expect(@player1.stack.cards).to eq([@card1, @card2, @card3])
     end
 
+    it 'checks player2 current stack of cards (deck)' do
+
+        expect(@player2.stack.cards).to eq([@card4, @card5, @card6])
+    end
 
 
 
