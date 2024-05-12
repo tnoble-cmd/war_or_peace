@@ -36,6 +36,10 @@ RSpec.describe Player do
         expect(@player2.stack.cards).to eq([@card4, @card5, @card6])
     end
 
+    it 'checks if player has lost' do
+
+        expect(@player1.has_lost?).to eq(false)
+    end
 
 
 
