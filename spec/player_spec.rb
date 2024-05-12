@@ -46,6 +46,13 @@ RSpec.describe Player do
         expect(@player1.stack.remove_card).to eq(@card1)
     end
 
+    it 'checks if player stack updates after removing card' do
+
+        @player1.stack.remove_card
+
+        expect(@player1.stack.cards).to eq([@card2, @card3])
+    end
+
 
 
 
