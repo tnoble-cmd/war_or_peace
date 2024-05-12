@@ -41,6 +41,13 @@ RSpec.describe Player do
         expect(@player1.has_lost?).to eq(false)
     end
 
+    it 'checks if player can remove card' do
+
+        expect(@player1.stack.remove_card).to eq(@card1)
+    end
+
+
+
 
 
 
