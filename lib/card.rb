@@ -1,4 +1,5 @@
 require './lib/deck' 
+require './lib/player'
 
 class Card
     attr_reader :suit, :value, :rank
