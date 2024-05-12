@@ -38,7 +38,7 @@ RSpec.describe Player do
 
     it 'checks if player has lost' do
 
-        expect(@player1.has_lost?).to eq(false)
+        expect(@player1.has_lost).to eq(false)
     end
 
     it 'checks if player can remove card' do
@@ -53,6 +53,14 @@ RSpec.describe Player do
         expect(@player1.stack.cards).to eq([@card2, @card3])
     end
 
+    it 'checks if player has lost' do
+
+        @player1.stack.remove_card
+        @player1.stack.remove_card
+        @player1.stack.remove_card
+
+        expect(@player1.has_lost?).to eq(true)
+    end
 
 
 

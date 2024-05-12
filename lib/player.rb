@@ -2,7 +2,7 @@ require './lib/deck'
 require './lib/card'
 
 class Player
-    attr_reader :name, :has_lost
+    attr_reader :name, :has_lost, :stack
     attr_accessor :stack
     def initialize(name, stack)
         @name = name
@@ -12,7 +12,9 @@ class Player
     end
 
     def has_lost?
-        @has_lost
+        if stack.cards.length == 0
+            return @has_lost = true
+        end
     end
 
 
