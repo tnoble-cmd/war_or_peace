@@ -11,7 +11,7 @@ class Turn
 
     end
 
-    def type
+    def type #create symbol identifier per turn
         if basic?
             :basic
         elsif mutually_assured_destruction?
@@ -34,6 +34,24 @@ class Turn
         player_1.stack.rank_of_cards_at(2) == player_2.stack.rank_of_cards_at(2)
     end
 
+    def pile_cards
+        if type == :basic
+            @spoils_of_war << player_1.stack.remove_card(0)
+            @spoils_of_war << player_2.stack.remove_card(0)
+        end
+        
+    end
+
+    def winner
+        if type == :basic
+            if player_1.stack.rank_of_cards_at(0)>player_2.stack.rank_of_cards_at(0)
+                "#{player_1.name} wins"
+            else
+                "#{player_2.name} wins"
+            end
+        end
+
+    end
 
 
 end
