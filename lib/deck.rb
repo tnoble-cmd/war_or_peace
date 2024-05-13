@@ -1,5 +1,6 @@
 require './lib/card'
 require './lib/player'
+require './lib/turn/'
 
 class Deck
     attr_accessor :cards

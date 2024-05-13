@@ -1,5 +1,6 @@
 require './lib/deck'
 require './lib/card'
+require './lib/turn'
 
 class Player
     attr_reader :name, :has_lost, :stack
@@ -16,6 +17,7 @@ class Player
             return @has_lost = true
         end
     end
+
 
 
 end

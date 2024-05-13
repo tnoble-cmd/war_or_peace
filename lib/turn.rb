@@ -11,7 +11,19 @@ class Turn
 
     end
 
+    def type
+        if basic?
+            :basic
+        elsif war?
+            :war
+        elsif mutually_assured_destruction
+            :mutually_assured_destruction
+        end
+    end
 
+    def basic?
+        player_1.stack.rank_of_cards_at(0) != player_2.stack.rank_of_cards_at(0)
+    end
 
 
 end

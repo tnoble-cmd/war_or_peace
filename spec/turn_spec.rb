@@ -26,6 +26,10 @@ RSpec.describe Turn do
         expect(@turn).to be_an_instance_of(Turn)
     end
 
+    it 'checks turn type' do
+
+        expect(@turn.type).to eq(:basic)
+    end
 
 
 end
