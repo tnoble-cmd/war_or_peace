@@ -139,6 +139,29 @@ RSpec.describe Turn do
 
     end
 
+    it 'checks pile_cards :basic' do
+
+        @card1 = Card.new(:diamond, 'Queen', 12)
+        @card2 = Card.new(:spade, '3', 3)
+        @card3 = Card.new(:heart, 'Ace', 14)
+        @card4 = Card.new(:heart, 'King', 13)
+        @card5 = Card.new(:spade, '10', 10)
+        @card6 = Card.new(:heart, '2', 14)
+
+        @deck1 = Deck.new([@card1, @card2, @card3])
+        @deck2 = Deck.new([@card4, @card5, @card6])
+
+        @player1 = Player.new('Clarisa', @deck1)
+        @player2 = Player.new('John', @deck2)
+        @turn = Turn.new(@player1, @player2)
+
+        expect(@turn.type).to eq(:basic)
+
+        @turn.pile_cards
+
+        expect(@turn.spoils_of_war).to eq([@card1, @card4])
+    end
+
     it 'checks winner' do
 
         @card1 = Card.new(:diamond, 'Queen', 12)
