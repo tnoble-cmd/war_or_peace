@@ -41,10 +41,12 @@ class Turn
         end
 
         if type == :war
-            @spoils_of_war << player_1.stack.remove_card(0..2)
-            @spoils_of_war << player_2.stack.remove_card(0..2)
+          3.times do
+            @spoils_of_war << player_1.stack.remove_card(0)
+            @spoils_of_war << player_2.stack.remove_card(0)
+          end
         end
-
+        #created loop to iterate through the first 3 cards in stack and remove them from both players.
         if type == :mutually_assured_destruction
           3.times do 
             player_1.stack.remove_card(0)
