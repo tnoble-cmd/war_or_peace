@@ -67,7 +67,7 @@ RSpec.describe Deck do
 
         deck = Deck.new([card1, card2, card3, card4])
 
-        expect(deck.remove_card).to eq(card1)
+        expect(deck.remove_card(0)).to eq(card1)
     end
 
     it 'Add_card to the bottom of deck' do

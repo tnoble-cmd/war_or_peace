@@ -15,7 +15,7 @@ class Turn
         if basic?
             :basic
         elsif mutually_assured_destruction?
-            :mutually_assured_destruction?
+            :mutually_assured_destruction
         elsif war?
             :war
         end
@@ -39,15 +39,33 @@ class Turn
             @spoils_of_war << player_1.stack.remove_card(0)
             @spoils_of_war << player_2.stack.remove_card(0)
         end
+
+        if type == :war
+            @spoils_of_war << player_1.stack.remove_card(0..2)
+            @spoils_of_war << player_2.stack.remove_card(0..2)
+        end
+
+        if type == :mutually_assured_destruction
+          3.times do 
+            player_1.stack.remove_card(0)
+            player_2.stack.remove_card(0)
+          end
+        end
         
     end
 
     def winner
         if type == :basic
             if player_1.stack.rank_of_cards_at(0)>player_2.stack.rank_of_cards_at(0)
-                "#{player_1.name} wins"
+                return @player_1
             else
-                "#{player_2.name} wins"
+                return @player_2
+            end
+        elsif type == :war
+            if player_1.stack.rank_of_card_at(2) > player_2.stack.rank_of_cards_at(2)
+                return @player_1
+            else
+                return @player_2
             end
         end
 

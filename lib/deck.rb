@@ -24,9 +24,9 @@ class Deck
     def percent_high_ranking
         (high_ranking_cards.length.to_f / @cards.length * 100).round(2)
     end
-
-    def remove_card
-        @cards.shift()
+        #changed .shift() to .slice! to remove the (index arg) from the cards array
+    def remove_card(index)
+        @cards.slice!(index)
     end
 
     def add_card(card)
