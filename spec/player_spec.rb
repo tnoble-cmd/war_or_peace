@@ -43,30 +43,30 @@ RSpec.describe Player do
 
     it 'checks if player can remove card' do
 
-        expect(@player1.stack.remove_card).to eq(@card1)
+        expect(@player1.stack.remove_card(0)).to eq(@card1)
     end
 
     it 'checks if player stack updates after removing card' do
 
-        @player1.stack.remove_card
+        @player1.stack.remove_card(0)
 
         expect(@player1.stack.cards).to eq([@card2, @card3])
     end
 
     it 'checks if player has lost when out of cards' do
 
-        @player1.stack.remove_card
-        @player1.stack.remove_card
-        @player1.stack.remove_card
+        @player1.stack.remove_card(0)
+        @player1.stack.remove_card(0)
+        @player1.stack.remove_card(0)
 
         expect(@player1.has_lost?).to eq(true)
     end
 
     it 'checks if players deck is empty.' do
         
-        @player1.stack.remove_card
-        @player1.stack.remove_card
-        @player1.stack.remove_card
+        @player1.stack.remove_card(0)
+        @player1.stack.remove_card(0)
+        @player1.stack.remove_card(0)
 
         expect(@player1.stack.cards.length).to eq(0)
     end

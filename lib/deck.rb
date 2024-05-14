@@ -5,7 +5,7 @@ require './lib/turn/'
 class Deck
     attr_accessor :cards
 
-    def initialize(card_arr)
+    def initialize(card_arr = [])
         @cards = card_arr
         
 
@@ -32,4 +32,20 @@ class Deck
     def add_card(card)
         @cards.append(card)
     end
+
+
+    def dealer
+        suit = ['Heart', 'Diamonds', 'Clubs', 'Spades']
+        value = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+        rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+        #created an outer loop and inner loop. While executed it will be the value, along with index as arguments. Suit(0) will pair with each value,index and rank(since i passed it next to rank)
+        #it will increment through value and index until == 14 then the loop will increment to diamonds etc. All while passing in as arguments for new instances of cards. Each pair of 3 will create a card.
+        suit.each do |suit|
+         value.each_with_index do |value, index|
+            @cards << Card.new(suit, value, rank[index])
+         end
+        end
+    end
+
 end

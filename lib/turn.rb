@@ -74,7 +74,8 @@ class Turn
             "No Winner"
         end
     end
-
+    #assigned @spoils_of_war to var spoils. passed in spoils as an argument to my loop that iterates over each element in spoils array.
+    #I was initially encountering a nested array bug to updated players hand after awarding_spoils was invoked.
     def award_spoils(winner)
       spoils = @spoils_of_war
       spoils.each do |index|
