@@ -1,3 +1,4 @@
+require 'pry'
 require './lib/card'
 require './lib/deck'
 require './lib/player'
@@ -8,7 +9,7 @@ class Turn
         @player_1 = player_1
         @player_2 = player_2 
         @spoils_of_war = []
-
+    
     end
 
     def type #create symbol identifier per turn
@@ -64,14 +65,27 @@ class Turn
                 return @player_2
             end
         elsif type == :war
-            if player_1.stack.rank_of_card_at(2) > player_2.stack.rank_of_cards_at(2)
+            if player_1.stack.rank_of_cards_at(2) > player_2.stack.rank_of_cards_at(2)
                 return @player_1
             else
                 return @player_2
             end
+        elsif type == :mutually_assured_destruction
+            "No Winner"
         end
+    end
 
+    def award_spoils(winner)
+      spoils = @spoils_of_war
+      spoils.each do |index|
+        if winner == player_1
+            player_1.stack.add_card(index)
+        else
+            player_2.stack.add_card(index)
+        end
+      end
     end
 
 
 end
+
