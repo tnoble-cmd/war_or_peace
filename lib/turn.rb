@@ -2,6 +2,7 @@ require 'pry'
 require './lib/card'
 require './lib/deck'
 require './lib/player'
+require './lib/wop_runner'
 
 class Turn
     attr_reader :player_1, :player_2, :spoils_of_war
@@ -23,16 +24,16 @@ class Turn
     end
 
     def basic?
-        player_1.stack.rank_of_cards_at(0) != player_2.stack.rank_of_cards_at(0)
+        @player_1.stack.rank_of_cards_at(0) != @player_2.stack.rank_of_cards_at(0)
     end
 
     def war?
-        player_1.stack.rank_of_cards_at(0) == player_2.stack.rank_of_cards_at(0)
+        @player_1.stack.rank_of_cards_at(0) == @player_2.stack.rank_of_cards_at(0)
     end
         #face up is equal, put one card face down and another face up, if both equal NO WIN. No spoil of war
     def mutually_assured_destruction?
-        player_1.stack.rank_of_cards_at(0) == player_2.stack.rank_of_cards_at(0) &&
-        player_1.stack.rank_of_cards_at(2) == player_2.stack.rank_of_cards_at(2)
+        @player_1.stack.rank_of_cards_at(0) == @player_2.stack.rank_of_cards_at(0) &&
+        @player_1.stack.rank_of_cards_at(2) == @player_2.stack.rank_of_cards_at(2)
     end
 
     def pile_cards
@@ -50,8 +51,8 @@ class Turn
         #created loop to iterate through the first 3 cards in stack and remove them from both players.
         if type == :mutually_assured_destruction
           3.times do 
-            player_1.stack.remove_card(0)
-            player_2.stack.remove_card(0)
+            @player_1.stack.remove_card(0)
+            @player_2.stack.remove_card(0)
           end
         end
         
@@ -80,13 +81,11 @@ class Turn
       spoils = @spoils_of_war
       spoils.each do |index|
         if winner == player_1
-            player_1.stack.add_card(index)
+            @player_1.stack.add_card(index)
         else
             player_2.stack.add_card(index)
         end
       end
     end
-
-
 end
 

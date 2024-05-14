@@ -40,7 +40,7 @@ class Deck
         rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
      #created a nested loop with the .each_with_index enumerable. While executed the outer loop will start with Suit(0) and pair with each value,index and rank.
-     #it will increment through value and index until == 14 then the loop will increment to diamonds etc. All while passing in as arguments for new instances of cards.
+     #it will increment through value and index until == 13 then the loop will increment to diamonds etc. All while passing in as arguments for new instances of cards.
      #rank[index] goes with the index of value.
         suit.each do |suit|
          value.each_with_index do |value, index|
@@ -53,10 +53,10 @@ class Deck
         @cards.shuffle
     end
 
-    #return
+    #return 2 arrays. assigned @cards.length /2 to split deck. 52/2 = 26 . .take will take up to the 26th, .drop will take every other not exceeding 26
     def deck_split
         split_deck = @cards.length / 2
-        [@cards.take(split_deck), cards.drop(split_deck)]
+        [@cards.take(split_deck), @cards.drop(split_deck)]
     end
 
 end
