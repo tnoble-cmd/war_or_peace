@@ -1,6 +1,7 @@
 require './lib/deck'
 require './lib/card'
 require './lib/turn'
+require './lib/wop_runner'
 
 class Player
     attr_reader :name, :has_lost, :stack

@@ -1,6 +1,7 @@
 require './lib/card'
 require './lib/player'
-require './lib/turn/'
+require './lib/turn'
+require './lib/wop_runner'
 
 class Deck
     attr_accessor :cards
@@ -33,19 +34,29 @@ class Deck
         @cards.append(card)
     end
 
-
     def dealer
         suit = ['Heart', 'Diamonds', 'Clubs', 'Spades']
         value = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
         rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
-        #created an outer loop and inner loop. While executed it will be the value, along with index as arguments. Suit(0) will pair with each value,index and rank(since i passed it next to rank)
-        #it will increment through value and index until == 14 then the loop will increment to diamonds etc. All while passing in as arguments for new instances of cards. Each pair of 3 will create a card.
+     #created a nested loop with the .each_with_index enumerable. While executed the outer loop will start with Suit(0) and pair with each value,index and rank.
+     #it will increment through value and index until == 14 then the loop will increment to diamonds etc. All while passing in as arguments for new instances of cards.
+     #rank[index] goes with the index of value.
         suit.each do |suit|
          value.each_with_index do |value, index|
             @cards << Card.new(suit, value, rank[index])
          end
         end
+    end
+
+    def shuffle
+        @cards.shuffle
+    end
+
+    #return
+    def deck_split
+        split_deck = @cards.length / 2
+        [@cards.take(split_deck), cards.drop(split_deck)]
     end
 
 end
